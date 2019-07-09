@@ -1,37 +1,99 @@
 // Your code goes here
 
 
-const logoHeading = document.querySelector('.main-navigation .logo-heading');
+// mouseover event
 
-logoHeading.addEventListener('mouseover', function (event) {
-    event.target.style.color = 'red';
-    console.log(event);
-})
+const navLink = document.querySelectorAll('.nav-link');
+console.log(navLink);
 
-
-const navScale = document.querySelector('.main-navigation')
-
-document.addEventListener('wheel', e => {
-    navScale.style.height = '50px';
-
-})
+navLink.forEach(item =>{
+    item.addEventListener('mouseover', ev =>{
+        ev.target.style.fontSize = '2rem';
+    });
 
 
-const busImage = document.querySelector('.intro img');
+});
 
-busImage.addEventListener('load', function (event) {
-    busImage.style.opacity = '0.5';
-})
+// mouseleave event
+navLink.forEach(item =>{
+    item.addEventListener('mouseleave', ev =>{
+        console.log('mouse left');
+        ev.target.style.fontSize = "";
+    });
+});
 
-const pageBody = document.querySelector('body')
+// click event
+const logo = document.querySelector('.logo-heading');
+console.log(logo);
+logo.addEventListener('click', ev =>{
+    console.log('clicked');
+    ev.target.style.color = "red";
+    ev.target.style.fontWeight = "oblique";
+    setTimeout(function(){
+        console.log('reset')
+        ev.target.style.color = "";
+        ev.target.style.fontWeight = "";
+    }, 500);
+});
 
 
-const image = document.querySelectorAll('img')
 
-image.forEach(function (element) {
-    element.addEventListener('dblclick', function () {
-        alert('Dude, these images wont get bigger when you double click on them!')
-    })
-})
+// dragstart
+const funBus = document.querySelector('.intro img');
+console.log(funBus);
 
+funBus.addEventListener('dragstart', ev =>{
+    console.log('drag');
+    ev.target.style.opacity = 1;
+});
+
+// dragend
+funBus.addEventListener('dragend', ev =>{
+    console.log('dragged')
+    ev.target.style.opacity = "";
+});
+
+//load event
+window.addEventListener('load', ev =>{
+    document.querySelector('.main-navigation').style.backgroundColor = "dodgerblue";
+    setTimeout(function(){
+        document.querySelector('.main-navigation').style.backgroundColor = "";
+    },1000);
+
+});
+
+
+// scroll
+window.addEventListener("scroll", function(){
+    const allParas = document.querySelectorAll("p");
+    allParas.forEach(function(ev){
+        ev.style.color = "green";
+    });
+});
+
+
+// keydown
+
+window.addEventListener('keydown', function(event){
+    document.querySelectorAll("h2").forEach(ev =>{
+        ev.style.color = "blue";
+    });
+});
+
+
+// keyup
+
+window.addEventListener('keyup', event =>{
+    document.querySelectorAll("h2").forEach(ev =>{
+        ev.style.color = "";
+    });
+});
+
+// "dblclick"
+const images =  document.querySelectorAll(".img-content");
+images.forEach(event =>{
+    event.addEventListener("dblclick", ev3 =>{
+        ev3.target.style.border = "10px solid green";
+     });
+});
 
